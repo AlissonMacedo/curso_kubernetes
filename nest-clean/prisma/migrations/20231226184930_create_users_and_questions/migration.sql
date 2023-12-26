@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "users" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE "questions" (
     "content" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
-    "author_id" INTEGER NOT NULL,
+    "author_id" TEXT NOT NULL,
 
     CONSTRAINT "questions_pkey" PRIMARY KEY ("id")
 );

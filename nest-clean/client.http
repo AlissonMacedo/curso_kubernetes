@@ -1,13 +1,14 @@
 @baseURL = http://localhost:3333
+@authToken = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzRiOTY0NS1jY2VkLTQ3YWUtOTczYS05N2Q5MGZlNmEwNTkiLCJpYXQiOjE3MDM2MjA0NDh9.sd06nDnTY--D0QGXt7bvkVZrtY3vn3oxws5IAWNSuJC4lYMaDCB1kFhGuq5G6-4eY-BC8QH-wUkoKFgkr1itKtJNOioklGhdI8ypqAUTRMD8_DojAcGpQ-F5hKLkUnEzsozHBafj7uBUWoQaqsreBgxU6r06cOEITSUKL36eJDggyOYMmRMIBvqtwZ1gS79DvnefuyE6UsUlpgIJma8MasSkgKQpH3aLjvVMO0uvCOh9J6cOSAobbb2FTN0bXWIs6-Jpkm82fLi1bZOjIODIK6OfoyKoza_2yeiRzKbMEPrfLuGEHTWP8PCqL7cfW72ukFdjBk_9UvCfaW7TpHo3TQ
 
 # @name create_account
 POST {{baseURL}}/accounts
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "email": "john.doe@gmail.com",
-  "password": "password"
+  "name": "John Doe 2",
+  "email": "john.doe2@gmail.com",
+  "password": "password2"
 }
 
 ###
@@ -18,8 +19,32 @@ POST {{baseURL}}/authentication
 Content-Type: application/json
 
 {
-  "email": "john.doe@gmail.com",
-  "password": "password"
+  "email": "john.doe2@gmail.com",
+  "password": "password2"
 }
 
+###
+
+# @name questions
+
+POST {{baseURL}}/questions
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "Nova pergunta",
+  "content": "Conteúdo da pergunta"
+}
+###
+
+# @name fetch_recent_questions
+
+GET {{baseURL}}/questions?page=1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "Nova pergunta",
+  "content": "Conteúdo da pergunta"
+}
 ###
