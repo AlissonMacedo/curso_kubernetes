@@ -15,7 +15,7 @@ Content-Type: application/json
 
 # @name authentication
 
-POST {{baseURL}}/authentication
+POST {{baseURL}}/sessions
 Content-Type: application/json
 
 {
@@ -32,14 +32,14 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "title": "Nova pergunta",
-  "content": "Conteúdo da pergunta"
+  "title": "Nova pergunta 2",
+  "content": "Conteúdo da pergunta 2"
 }
 ###
 
 # @name fetch_recent_questions
 
-GET {{baseURL}}/questions?page=1
+GET {{baseURL}}/questions
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 

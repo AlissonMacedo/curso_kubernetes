@@ -1,4 +1,4 @@
-import { Controller, Get, Query, UseGuards } from '@nestjs/common'
+import { Controller, Get, HttpCode, Query, UseGuards } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
 import { ZodValidationPipe } from '@/pipes/zod-validation'
 import { PrismaService } from '@/prisma/prisma.service'
@@ -18,10 +18,11 @@ export class FetchRecentQuestionsController {
 
 
   @Get()
+  @HttpCode(200)
   async handle(
     @Query('page', queryValidationPipe) page: PagueQueryParamSchema
   ) {
-    const perPage = 1
+    const perPage = 20
 
     const questions = await this.prisma.question.findMany({
       take: perPage,

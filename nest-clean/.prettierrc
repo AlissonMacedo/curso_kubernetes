@@ -4,7 +4,9 @@
     {
       "singleQuote": true,
       "parser": "flow",
-      "endOfLine": "auto"
+      "endOfLine": "auto",
+      "trailingComma": "none",
+      "semi": false
     }
   ]
 }

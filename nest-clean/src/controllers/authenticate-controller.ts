@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  HttpCode,
   Post,
   UnauthorizedException,
   UsePipes,
@@ -18,7 +19,7 @@ const authentcationBodySchema = z.object({
 
 type AuthencateBodySchema = z.infer<typeof authentcationBodySchema>
 
-@Controller('/authentication')
+@Controller('/sessions')
 export class AuthenticateController {
   constructor(
     private prisma: PrismaService,
@@ -26,6 +27,7 @@ export class AuthenticateController {
   ) { }
 
   @Post()
+  @HttpCode(201)
   @UsePipes(new ZodValidationPipe(authentcationBodySchema))
   async handle(@Body() body: AuthencateBodySchema) {
     const { email, password } = body
