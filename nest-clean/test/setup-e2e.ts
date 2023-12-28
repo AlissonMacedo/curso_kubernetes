@@ -5,7 +5,6 @@ import { execSync } from 'node:child_process'
 
 const prisma = new PrismaClient()
 
-
 function genereteUniqueDatabaseURL(schemaId: string) {
   if (!process.env.DATABASE_URL) {
     throw new Error('Please provider a DATABASE_URL environment variable')
@@ -25,11 +24,10 @@ beforeAll(async () => {
 
   process.env.DATABASE_URL = databaseURL
 
-  execSync('pnpm prisma migrate deploy',)
+  execSync('pnpm prisma migrate deploy')
 
   console.log('databaseURL', databaseURL)
 })
-
 
 afterAll(async () => {
   await prisma.$executeRawUnsafe(`DROP SCHEMA IF EXISTS "${schemaId}" CASCADE`)
